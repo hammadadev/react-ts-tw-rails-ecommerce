@@ -13,7 +13,7 @@ const signup = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:3000/api/v1/signup", {
+    const res = await fetch(`${import.meta.env.VITE_RAILS_BASE_URL}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,6 +22,7 @@ const signup = () => {
     });
 
     const data = await res.json();
+    console.log(data);
   };
   return (
     <div className="flex flex-col justify-center items-center">
