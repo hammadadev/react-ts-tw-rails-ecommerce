@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { loginInputs } from "../types";
-import {login} from "../api_request";
-
+import { loginInputs } from "../../../types";
+import { login } from "../../../api_request";
 
 const Signin = () => {
   const {
@@ -11,11 +10,10 @@ const Signin = () => {
     formState: { errors },
     reset,
     setError,
-    clearErrors,
   } = useForm<loginInputs>();
 
   const onSubmit = async (data: loginInputs) => {
-    const result = await login(data)
+    const result = await login(data);
     if (result.error) {
       setError("password", {
         type: "server",
@@ -105,7 +103,6 @@ const Signin = () => {
               className="block w-full select-none rounded-lg bg-gradient-to-tr from-blue-600 to-blue-400 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="submit"
               data-ripple-light="true"
-              onClick={() => clearErrors()}
             >
               Sign In
             </button>
