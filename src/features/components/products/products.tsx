@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../../../redux/slices/products";
+import Product from "./product";
 import { useEffect } from "react";
 import { RootState, AppDispatch } from "../../../redux/store";
 export const Products = () => {
@@ -12,13 +13,14 @@ export const Products = () => {
     dispatch(getProducts());
   }, []);
 
-  console.log(products);
   if (isLoading) {
-    return (
-      <div>
-        <h4>Loading...</h4>
-      </div>
-    );
+    return <div>Loading....</div>;
   }
-  return <div className="flex">Hi</div>;
+  return (
+    <div className="my-8 grid grid-rows-4 grid-flow-col gap-4">
+      {products.map((product) => {
+        return <Product key={product.id} product={product} />;
+      })}
+    </div>
+  );
 };

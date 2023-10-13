@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
 
-import { SignupInputs } from "../../../types";
+import { SignupInputsT } from "../../../types";
 
 const signup = () => {
   const {
@@ -11,9 +11,9 @@ const signup = () => {
     formState: { errors },
     // setError,
     getValues,
-  } = useForm<SignupInputs>();
+  } = useForm<SignupInputsT>();
 
-  const onSubmit = async (data: SignupInputs) => {
+  const onSubmit = async (data: SignupInputsT) => {
     const res = await fetch(`${import.meta.env.VITE_RAILS_BASE_URL}/signup`, {
       method: "POST",
       headers: {
