@@ -22,13 +22,11 @@ export const getProducts = createAsyncThunk(
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJleHAiOjE2OTcyMjYxNzYsImlzcyI6IlJhaWxzIGFwcCJ9.NHTyPIo2baDTpdJErVxZmv05yu6-wlqrkCKKXRauPMU",
       },
     });
 
     const data = await res.json();
-    return data;
+    return data.data;
   }
 );
 

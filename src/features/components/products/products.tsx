@@ -3,7 +3,9 @@ import { getProducts } from "../../../redux/slices/products";
 import { useEffect } from "react";
 import { RootState, AppDispatch } from "../../../redux/store";
 export const Products = () => {
-  const { products } = useSelector((state: RootState) => state.products);
+  const { products, isLoading } = useSelector(
+    (state: RootState) => state.products
+  );
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -11,5 +13,12 @@ export const Products = () => {
   }, []);
 
   console.log(products);
+  if (isLoading) {
+    return (
+      <div>
+        <h4>Loading...</h4>
+      </div>
+    );
+  }
   return <div className="flex">Hi</div>;
 };
